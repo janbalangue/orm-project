@@ -1,7 +1,7 @@
 package io.github.computeruser88.model;
 
-import io.github.computeruser88.annotations.Column;
-import io.github.computeruser88.annotations.PrimaryKey;
+import io.github.computeruser88.annotation.Column;
+import io.github.computeruser88.annotation.PrimaryKey;
 
 public class Exercise {
 

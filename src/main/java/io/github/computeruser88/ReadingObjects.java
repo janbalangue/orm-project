@@ -1,7 +1,9 @@
 package io.github.computeruser88;
 
+import io.github.computeruser88.beanmanager.BeanManager;
 import io.github.computeruser88.model.Exercise;
 import io.github.computeruser88.orm.EntityManager;
+import io.github.computeruser88.orm.ManagedEntityManager;
 
 import java.lang.reflect.InvocationTargetException;
 import java.sql.SQLException;
@@ -9,7 +11,9 @@ import java.sql.SQLException;
 public class ReadingObjects {
     public static void main(String[] args) throws Exception {
 
-        EntityManager<Exercise> entityManager = EntityManager.of(Exercise.class);
+        BeanManager beanManager = BeanManager.getInstance();
+
+        EntityManager<Exercise> entityManager = beanManager.getInstance(ManagedEntityManager.class);
 
         Exercise squat = entityManager.find(Exercise.class, 1L);
         Exercise benchPress = entityManager.find(Exercise.class, 2L);

@@ -1,6 +1,6 @@
 package io.github.computeruser88.util;
 
-import io.github.computeruser88.annotations.PrimaryKey;
+import io.github.computeruser88.annotation.PrimaryKey;
 
 import java.lang.reflect.Field;
 

@@ -1,12 +1,16 @@
 package io.github.computeruser88;
 
+import io.github.computeruser88.beanmanager.BeanManager;
 import io.github.computeruser88.model.Exercise;
 import io.github.computeruser88.orm.EntityManager;
+import io.github.computeruser88.orm.ManagedEntityManager;
 
 public class WritingObjects {
 
     public static void main(String[] args) throws Exception {
-        EntityManager<Exercise> entityManager = EntityManager.of(Exercise.class);
+
+        BeanManager beanManager = BeanManager.getInstance();
+        EntityManager<Exercise> entityManager = beanManager.getInstance(ManagedEntityManager.class);
 
         Exercise squat = new Exercise("Squat", "STRENGTH_TRAINING");
         Exercise benchPress = new Exercise("Bench Press", "STRENGTH_TRAINING");

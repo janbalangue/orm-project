@@ -1,5 +1,7 @@
 package io.github.computeruser88.orm;
 
+import io.github.computeruser88.annotation.Inject;
+import io.github.computeruser88.beanmanager.BeanManager;
 import io.github.computeruser88.util.ColumnField;
 import io.github.computeruser88.util.Metamodel;
 
@@ -8,7 +10,11 @@ import java.lang.reflect.InvocationTargetException;
 import java.sql.*;
 import java.util.concurrent.atomic.AtomicLong;
 
-public abstract class AbstractEntityManager<T> implements EntityManager<T> {
+
+public class ManagedEntityManager<T> implements EntityManager<T> {
+
+    @Inject
+    private Connection connection;
 
     private AtomicLong idGenerator = new AtomicLong(0L);
 
@@ -25,7 +31,7 @@ public abstract class AbstractEntityManager<T> implements EntityManager<T> {
     public T find(Class<T> clss, long primaryKey) throws SQLException, InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException {
         Metamodel metamodel = Metamodel.of(clss);
         String sql = metamodel.buildSelectRequest();
-        try(PreparedStatement statement = prepareStatementWith(sql).andPrimaryKey(primaryKey);) {
+        try (PreparedStatement statement = prepareStatementWith(sql).andPrimaryKey(primaryKey);) {
             ResultSet resultSet = statement.executeQuery();
             return buildInstanceFrom(clss, resultSet);
         }
@@ -57,8 +63,6 @@ public abstract class AbstractEntityManager<T> implements EntityManager<T> {
     }
 
     private PreparedStatementWrapper prepareStatementWith(String sql) throws SQLException {
-        Connection connection =
-                DriverManager.getConnection("jdbc:mysql://localhost:3306/ormproject","root", "pluralsight");
         PreparedStatement statement = connection.prepareStatement(sql);
         return new PreparedStatementWrapper(statement);
     }

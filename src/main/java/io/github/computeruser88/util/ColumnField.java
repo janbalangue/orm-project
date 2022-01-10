@@ -1,6 +1,6 @@
 package io.github.computeruser88.util;
 
-import io.github.computeruser88.annotations.Column;
+import io.github.computeruser88.annotation.Column;
 
 import java.lang.reflect.Field;
 

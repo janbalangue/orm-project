@@ -5,9 +5,6 @@ import java.sql.SQLException;
 
 public interface EntityManager<T> {
 
-    static <T> EntityManager<T> of(Class<T> clss) {
-        return new MySqlEntityManager();
-    }
 
    void persist(T t) throws SQLException, IllegalArgumentException, IllegalAccessException;
 
