@@ -1,0 +1,8 @@
+io/github/computeruser88/util/Metamodel.class
+io/github/computeruser88/PlayWithMetamodel.class
+io/github/computeruser88/model/Exercise.class
+io/github/computeruser88/util/PrimaryKeyField.class
+io/github/computeruser88/util/ColumnField.class
+io/github/computeruser88/annotations/Column.class
+io/github/computeruser88/annotations/PrimaryKey.class
+io/github/computeruser88/model/ExerciseType.class
